@@ -115,9 +115,10 @@
     componentWillReceiveProps: function (newProps) {
       var value = this._or(ensureArray(newProps.value), this.state.value);
 
-      this.state.value = value.map(function (v) {
-        return this._trimAlignValue(v, newProps);
-      }, this);
+      this.setState({value: value.map(function (v) {
+          return this._trimAlignValue(v, newProps);
+        }, this)
+      });
     },
 
     _or: function (value, defaultValue) {
